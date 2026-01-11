@@ -13,21 +13,25 @@ const Layout = () => {
     };
 
     return (
-        <div className="min-h-screen bg-gray-50 text-gray-900 font-sans">
+        <div className="min-h-screen bg-slate-50 font-sans text-slate-900">
             {/* Navbar */}
-            <nav className="bg-white shadow">
+            <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex justify-between h-16">
-                        <div className="flex">
-                            <Link to="/" className="flex-shrink-0 flex items-center">
-                                <Shield className="h-8 w-8 text-blue-600 mr-2" />
-                                <span className="font-bold text-xl tracking-tight text-gray-900">CyberSentinel</span>
+                        <div className="flex items-center gap-8">
+                            <Link to="/" className="flex-shrink-0 flex items-center gap-2 group">
+                                <div className="p-1.5 bg-blue-600 rounded-lg shadow-md group-hover:bg-blue-700 transition-colors">
+                                    <Shield className="h-6 w-6 text-white" />
+                                </div>
+                                <span className="font-bold text-xl tracking-tight text-slate-800">
+                                    CyberSentinel
+                                </span>
                             </Link>
                         </div>
                         <div className="flex items-center">
                             <button
                                 onClick={handleLogout}
-                                className="ml-4 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-gray-500 hover:text-gray-700 bg-gray-100 hover:bg-gray-200 focus:outline-none transition"
+                                className="ml-4 inline-flex items-center px-4 py-2 border border-slate-200 text-sm font-medium rounded-lg text-slate-600 hover:text-blue-600 hover:bg-blue-50 hover:border-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
                             >
                                 <LogOut className="h-4 w-4 mr-2" />
                                 Logout
@@ -38,7 +42,7 @@ const Layout = () => {
             </nav>
 
             {/* Main Content */}
-            <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+            <main className="max-w-7xl mx-auto py-10 px-4 sm:px-6 lg:px-8">
                 <Outlet />
             </main>
         </div>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { Lock, Mail } from 'lucide-react';
+import { Lock, Mail, UserPlus } from 'lucide-react';
 
 const Register = () => {
     const [email, setEmail] = useState('');
@@ -22,52 +22,87 @@ const Register = () => {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
-            <div className="max-w-md w-full space-y-8 bg-white p-8 rounded-xl shadow-lg">
-                <div>
-                    <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-                        Create an account
+        <div className="min-h-screen flex items-center justify-center bg-slate-50 relative overflow-hidden font-sans">
+            {/* Ambient Background Effects */}
+            <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
+                <div className="absolute bottom-0 right-0 w-[50%] h-[50%] rounded-full bg-blue-100/50 blur-[100px]" />
+                <div className="absolute top-0 left-0 w-[50%] h-[50%] rounded-full bg-indigo-100/50 blur-[100px]" />
+            </div>
+
+            <div className="max-w-md w-full space-y-8 relative z-10 p-8">
+                {/* Header */}
+                <div className="text-center space-y-2">
+                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-white mb-6 shadow-xl border border-slate-100">
+                        <UserPlus className="w-8 h-8 text-blue-600" />
+                    </div>
+                    <h2 className="text-4xl font-extrabold text-slate-900 tracking-tight">
+                        Create Account
                     </h2>
-                    <p className="mt-2 text-center text-sm text-gray-600">
-                        Already have an account? <Link to="/login" className="font-medium text-blue-600 hover:text-blue-500">Sign in</Link>
+                    <p className="text-slate-500">
+                        Join CyberSentinel today
                     </p>
                 </div>
-                <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
-                    {error && <div className="text-red-500 text-sm text-center">{error}</div>}
-                    <div className="rounded-md shadow-sm -space-y-px">
-                        <div className="relative">
-                            <Mail className="absolute top-3 left-3 h-5 w-5 text-gray-400" />
-                            <input
-                                type="email"
-                                required
-                                className="appearance-none rounded-none rounded-t-md relative block w-full px-3 py-2 pl-10 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
-                                placeholder="Email address"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                            />
-                        </div>
-                        <div className="relative">
-                            <Lock className="absolute top-3 left-3 h-5 w-5 text-gray-400" />
-                            <input
-                                type="password"
-                                required
-                                className="appearance-none rounded-none rounded-b-md relative block w-full px-3 py-2 pl-10 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
-                                placeholder="Password"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                            />
-                        </div>
-                    </div>
 
-                    <div>
+                {/* Card */}
+                <div className="bg-white p-8 rounded-2xl shadow-xl border border-slate-100">
+                    <form className="space-y-6" onSubmit={handleSubmit}>
+                        {error && (
+                            <div className="bg-red-50 border border-red-100 rounded-lg p-4 flex items-center">
+                                <p className="text-red-600 text-sm">{error}</p>
+                            </div>
+                        )}
+
+                        <div className="space-y-5">
+                            <div className="space-y-2">
+                                <label className="text-sm font-semibold text-slate-700 ml-1">Email Address</label>
+                                <div className="relative group">
+                                    <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                        <Mail className="h-5 w-5 text-slate-400 group-focus-within:text-blue-500 transition-colors" />
+                                    </div>
+                                    <input
+                                        type="email"
+                                        required
+                                        className="block w-full pl-11 pr-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all shadow-sm"
+                                        placeholder="name@company.com"
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)}
+                                    />
+                                </div>
+                            </div>
+
+                            <div className="space-y-2">
+                                <label className="text-sm font-semibold text-slate-700 ml-1">Password</label>
+                                <div className="relative group">
+                                    <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                        <Lock className="h-5 w-5 text-slate-400 group-focus-within:text-blue-500 transition-colors" />
+                                    </div>
+                                    <input
+                                        type="password"
+                                        required
+                                        className="block w-full pl-11 pr-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all shadow-sm"
+                                        placeholder="Min 8 characters"
+                                        value={password}
+                                        onChange={(e) => setPassword(e.target.value)}
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
                         <button
                             type="submit"
-                            className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition"
+                            className="w-full flex justify-center py-3.5 px-4 border border-transparent rounded-xl text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 shadow-lg shadow-blue-600/20 transition-all hover:-translate-y-0.5"
                         >
-                            Register
+                            Sign Up
                         </button>
-                    </div>
-                </form>
+
+                        <p className="text-center text-sm text-slate-500">
+                            Already have an account?{' '}
+                            <Link to="/login" className="font-semibold text-blue-600 hover:text-blue-500 transition-colors">
+                                Sign in
+                            </Link>
+                        </p>
+                    </form>
+                </div>
             </div>
         </div>
     );
