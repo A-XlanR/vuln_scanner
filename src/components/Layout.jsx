@@ -1,7 +1,8 @@
 import React from 'react';
 import { Outlet, Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { Shield, LogOut } from 'lucide-react';
+import { LogOut } from 'lucide-react';
+import logo from '../assets/cybersentinel_logo.png';
 
 const Layout = () => {
     const { logout } = useAuth();
@@ -19,10 +20,8 @@ const Layout = () => {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex justify-between h-16">
                         <div className="flex items-center gap-8">
-                            <Link to="/" className="flex-shrink-0 flex items-center gap-2 group">
-                                <div className="p-1.5 bg-emerald-600 rounded-lg shadow-[0_0_15px_rgba(5,150,105,0.4)] group-hover:bg-emerald-500 transition-all duration-300">
-                                    <Shield className="h-6 w-6 text-white" />
-                                </div>
+                            <Link to="/" className="flex-shrink-0 flex items-center gap-3 group">
+                                <img src={logo} alt="CyberSentinel Logo" className="h-10 w-auto" />
                                 <span className="font-bold text-xl tracking-tight text-white group-hover:text-emerald-400 transition-colors">
                                     CyberSentinel
                                 </span>
