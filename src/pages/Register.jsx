@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { Lock, Mail, UserPlus } from 'lucide-react';
+import { Lock, Mail } from 'lucide-react';
 import logo from '../assets/cybersentinel_logo.png';
 
 const Register = () => {
