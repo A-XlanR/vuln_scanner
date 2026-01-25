@@ -22,47 +22,47 @@ const Register = () => {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-slate-50 relative overflow-hidden font-sans">
+        <div className="min-h-screen flex items-center justify-center bg-[#050505] relative overflow-hidden font-sans">
             {/* Ambient Background Effects */}
             <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
-                <div className="absolute bottom-0 right-0 w-[50%] h-[50%] rounded-full bg-blue-100/50 blur-[100px]" />
-                <div className="absolute top-0 left-0 w-[50%] h-[50%] rounded-full bg-indigo-100/50 blur-[100px]" />
+                <div className="absolute bottom-0 right-0 w-[50%] h-[50%] rounded-full bg-emerald-900/10 blur-[100px]" />
+                <div className="absolute top-0 left-0 w-[50%] h-[50%] rounded-full bg-slate-900/40 blur-[100px]" />
             </div>
 
             <div className="max-w-md w-full space-y-8 relative z-10 p-8">
                 {/* Header */}
                 <div className="text-center space-y-2">
-                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-white mb-6 shadow-xl border border-slate-100">
-                        <UserPlus className="w-8 h-8 text-blue-600" />
+                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-black/40 mb-6 shadow-2xl border border-white/10 backdrop-blur-xl">
+                        <UserPlus className="w-8 h-8 text-emerald-500 drop-shadow-[0_0_8px_rgba(16,185,129,0.5)]" />
                     </div>
-                    <h2 className="text-4xl font-extrabold text-slate-900 tracking-tight">
+                    <h2 className="text-4xl font-extrabold text-white tracking-tight">
                         Create Account
                     </h2>
-                    <p className="text-slate-500">
+                    <p className="text-slate-400">
                         Join CyberSentinel today
                     </p>
                 </div>
 
                 {/* Card */}
-                <div className="bg-white p-8 rounded-2xl shadow-xl border border-slate-100">
+                <div className="bg-white/5 backdrop-blur-2xl p-8 rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/10">
                     <form className="space-y-6" onSubmit={handleSubmit}>
                         {error && (
-                            <div className="bg-red-50 border border-red-100 rounded-lg p-4 flex items-center">
-                                <p className="text-red-600 text-sm">{error}</p>
+                            <div className="bg-red-500/10 border border-red-500/20 rounded-lg p-4 flex items-center">
+                                <p className="text-red-400 text-sm font-medium">{error}</p>
                             </div>
                         )}
 
                         <div className="space-y-5">
                             <div className="space-y-2">
-                                <label className="text-sm font-semibold text-slate-700 ml-1">Email Address</label>
+                                <label className="text-sm font-semibold text-slate-300 ml-1">Email Address</label>
                                 <div className="relative group">
                                     <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                                        <Mail className="h-5 w-5 text-slate-400 group-focus-within:text-blue-500 transition-colors" />
+                                        <Mail className="h-5 w-5 text-slate-500 group-focus-within:text-emerald-500 transition-colors" />
                                     </div>
                                     <input
                                         type="email"
                                         required
-                                        className="block w-full pl-11 pr-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all shadow-sm"
+                                        className="block w-full pl-11 pr-4 py-3.5 bg-black/40 border border-white/10 rounded-xl text-white placeholder-slate-600 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500/50 transition-all shadow-inner"
                                         placeholder="name@company.com"
                                         value={email}
                                         onChange={(e) => setEmail(e.target.value)}
@@ -71,15 +71,15 @@ const Register = () => {
                             </div>
 
                             <div className="space-y-2">
-                                <label className="text-sm font-semibold text-slate-700 ml-1">Password</label>
+                                <label className="text-sm font-semibold text-slate-300 ml-1">Password</label>
                                 <div className="relative group">
                                     <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                                        <Lock className="h-5 w-5 text-slate-400 group-focus-within:text-blue-500 transition-colors" />
+                                        <Lock className="h-5 w-5 text-slate-500 group-focus-within:text-emerald-500 transition-colors" />
                                     </div>
                                     <input
                                         type="password"
                                         required
-                                        className="block w-full pl-11 pr-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all shadow-sm"
+                                        className="block w-full pl-11 pr-4 py-3.5 bg-black/40 border border-white/10 rounded-xl text-white placeholder-slate-600 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500/50 transition-all shadow-inner"
                                         placeholder="Min 8 characters"
                                         value={password}
                                         onChange={(e) => setPassword(e.target.value)}
@@ -90,14 +90,14 @@ const Register = () => {
 
                         <button
                             type="submit"
-                            className="w-full flex justify-center py-3.5 px-4 border border-transparent rounded-xl text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 shadow-lg shadow-blue-600/20 transition-all hover:-translate-y-0.5"
+                            className="w-full flex justify-center py-4 px-4 border border-transparent rounded-xl text-sm font-bold text-black bg-emerald-500 hover:bg-emerald-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 shadow-[0_0_20px_rgba(16,185,129,0.3)] transition-all hover:-translate-y-0.5"
                         >
                             Sign Up
                         </button>
 
-                        <p className="text-center text-sm text-slate-500">
+                        <p className="text-center text-sm text-slate-400">
                             Already have an account?{' '}
-                            <Link to="/login" className="font-semibold text-blue-600 hover:text-blue-500 transition-colors">
+                            <Link to="/login" className="font-semibold text-emerald-500 hover:text-emerald-400 transition-colors">
                                 Sign in
                             </Link>
                         </p>

@@ -10,8 +10,6 @@ export const AuthProvider = ({ children }) => {
     useEffect(() => {
         const token = localStorage.getItem('token');
         if (token) {
-            // Technically we should validate the token with an endpoint like /me
-            // For MVP we assume if token exists, user is logged in, or the next API call will fail (401)
             setUser({ token });
         }
         setLoading(false);
