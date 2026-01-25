@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { Lock, Mail } from 'lucide-react';
-import logo from '../assets/cybersentinel_logo.png';
+import { Lock, Mail, UserPlus } from 'lucide-react';
 
 const Register = () => {
     const [email, setEmail] = useState('');
@@ -33,8 +32,8 @@ const Register = () => {
             <div className="max-w-md w-full space-y-8 relative z-10 p-8">
                 {/* Header */}
                 <div className="text-center space-y-2">
-                    <div className="inline-flex items-center justify-center mb-6">
-                        <img src={logo} alt="CyberSentinel Logo" className="h-20 w-auto drop-shadow-[0_0_15px_rgba(16,185,129,0.4)]" />
+                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-black/40 mb-6 shadow-2xl border border-white/10 backdrop-blur-xl">
+                        <UserPlus className="w-8 h-8 text-emerald-500 drop-shadow-[0_0_8px_rgba(16,185,129,0.5)]" />
                     </div>
                     <h2 className="text-4xl font-extrabold text-white tracking-tight">
                         Create Account
