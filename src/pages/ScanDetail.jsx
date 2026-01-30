@@ -94,8 +94,10 @@ const ScanDetail = () => {
                                             <div className="flex items-center justify-between gap-4 mb-3">
                                                 <h4 className="text-xl font-bold text-white leading-tight">{res.vulnerability_type}</h4>
                                                 <span className={`px-3 py-1 rounded-lg text-[10px] font-black uppercase tracking-[0.15em] border
-                                                    ${res.severity === 'HIGH' || res.severity === 'CRITICAL' ? 'bg-red-500 text-black border-red-500' :
-                                                        res.severity === 'MEDIUM' ? 'bg-amber-500 text-black border-amber-500' : 'bg-emerald-500 text-black border-emerald-500'}`}>
+                                                    ${res.severity === 'HIGH' || res.severity === 'CRITICAL' ? 'bg-red-500 text-black border-red-500 shadow-[0_0_10px_rgba(239,68,68,0.4)]' :
+                                                        res.severity === 'MEDIUM' ? 'bg-amber-500 text-black border-amber-500 shadow-[0_0_10px_rgba(245,158,11,0.4)]' :
+                                                            res.severity === 'LOW' ? 'bg-emerald-500/20 text-emerald-400 border-emerald-500/50' :
+                                                                'bg-slate-700 text-white border-slate-600'}`}>
                                                     {res.severity}
                                                 </span>
                                             </div>
