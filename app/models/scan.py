@@ -10,6 +10,12 @@ class ScanStatus(str, enum.Enum):
     COMPLETED = "completed"
     FAILED = "failed"
 
+class Severity(str, enum.Enum):
+    LOW = "LOW"
+    MEDIUM = "MEDIUM"
+    HIGH = "HIGH"
+    CRITICAL = "CRITICAL"
+
 class Scan(Base):
     __tablename__ = "scans"
 
@@ -29,7 +35,7 @@ class ScanResult(Base):
     id = Column(Integer, primary_key=True, index=True)
     scan_id = Column(Integer, ForeignKey("scans.id"))
     vulnerability_type = Column(String, nullable=False)
-    severity = Column(String, nullable=False) # LOW, MEDIUM, HIGH, CRITICAL
+    severity = Column(Enum(Severity), nullable=False)
     description = Column(Text, nullable=False)
     details = Column(Text, nullable=True)
 

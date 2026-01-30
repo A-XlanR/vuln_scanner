@@ -1,7 +1,7 @@
 import httpx
 from sqlalchemy.orm import Session
 from datetime import datetime
-from app.models.scan import Scan, ScanResult, ScanStatus
+from app.models.scan import Scan, ScanResult, ScanStatus, Severity
 
 async def perform_scan(scan_id: int, url: str, db: Session):
     scan = db.query(Scan).filter(Scan.id == scan_id).first()
@@ -28,7 +28,7 @@ async def perform_scan(scan_id: int, url: str, db: Session):
                     db.add(ScanResult(
                         scan_id=scan.id,
                         vulnerability_type="Missing Security Header",
-                        severity="MEDIUM" if header != "Content-Security-Policy" else "LOW",
+                        severity=Severity.MEDIUM if header != "Content-Security-Policy" else Severity.LOW,
                         description=f"Missing header: {header}",
                         details=f"{issue}. Recommendation: Add {header} to server configuration."
                     ))
@@ -39,7 +39,7 @@ async def perform_scan(scan_id: int, url: str, db: Session):
                 db.add(ScanResult(
                     scan_id=scan.id,
                     vulnerability_type="Server Information Disclosure",
-                    severity="LOW",
+                    severity=Severity.LOW,
                     description="Server header is present",
                     details=f"Server detected: {server_header}. Recommendation: Obscure server banner."
                 ))
@@ -51,7 +51,7 @@ async def perform_scan(scan_id: int, url: str, db: Session):
                      db.add(ScanResult(
                         scan_id=scan.id,
                         vulnerability_type="Insecure Cookie",
-                        severity="MEDIUM",
+                        severity=Severity.MEDIUM,
                         description=f"Cookie '{cookie.name}' is missing Secure flag",
                         details="Cookie sent over unencrypted connections."
                     ))
@@ -67,7 +67,7 @@ async def perform_scan(scan_id: int, url: str, db: Session):
         db.add(ScanResult(
             scan_id=scan.id,
             vulnerability_type="Scan Error",
-            severity="HIGH",
+            severity=Severity.HIGH,
             description="Failed to perform scan",
             details=str(e)
         ))

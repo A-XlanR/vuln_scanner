@@ -9,9 +9,15 @@ class ScanStatus(str, Enum):
     COMPLETED = "completed"
     FAILED = "failed"
 
+class Severity(str, Enum):
+    LOW = "LOW"
+    MEDIUM = "MEDIUM"
+    HIGH = "HIGH"
+    CRITICAL = "CRITICAL"
+
 class ScanResultBase(BaseModel):
     vulnerability_type: str
-    severity: str
+    severity: Severity
     description: str
     details: Optional[str] = None
 
